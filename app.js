@@ -6,8 +6,6 @@ const wsdlPath = "/wsdl";
 const wsdl = require('fs').readFileSync('service.wsdl', 'utf8');
 const app = express();
 
-require('dotenv').config()
-
 app.use('/static', express.static(path.join(__dirname, 'static')))
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));

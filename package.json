@@ -6,7 +6,6 @@
   "license": "MIT",
   "heroku-postbuild": "yarn install",
   "dependencies": {
-    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "path": "^0.12.7",
     "soap": "^0.42.0"
