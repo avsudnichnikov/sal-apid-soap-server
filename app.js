@@ -3,7 +3,7 @@ const soap = require('soap');
 const path = require('path');
 
 const wsdlPath = "/wsdl";
-const wsdl = require('fs').readFileSync('service.wsdl', 'utf8');
+const wsdl = require('fs').readFileSync('PostPerson.wsdl', 'utf8');
 const app = express();
 
 app.use('/static', express.static(path.join(__dirname, 'static')))
@@ -15,10 +15,10 @@ async function getIndex(request, response) {
     response.render('index');
 }
 
-const postPerson = function (args, callback) {
-    callback({
-        greeting: "Hello Cutie Pie!!!" + " " + args.name
-    });
+const postPerson = (args) =>{
+    return {
+        key: "Hello Cutie Pie!!!" + " " + args.name
+    };
 }
 
 const service = {
@@ -40,5 +40,4 @@ const cbSoap = () => {
 }
 
 app.listen(port, cbServ);
-
 soap.listen(app, wsdlPath, service, wsdl, cbSoap);

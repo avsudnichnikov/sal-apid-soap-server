@@ -3,13 +3,11 @@
         xmlns:tns="service.wsdl"
         xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
-        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
         xmlns="http://schemas.xmlsoap.org/wsdl/"
         targetNamespace="service.wsdl">
     <!--  definition of datatypes  -->
     <types>
-        <schema xmlns="http://www.w3.org/2000/10/XMLSchema" targetNamespace="service.xsd">
+        <schema targetNamespace="service.xsd">
             <element name="firstname">
                 <complexType>
                     <all>
@@ -36,6 +34,7 @@
     <!--  request messages  -->
     <message name="postPerson">
         <part name="firstname" type="xsd:firstname"/>
+        <part name="surname" type="xsd:surname"/>
     </message>
     <!--  response messages  -->
     <message name="returns_key">
