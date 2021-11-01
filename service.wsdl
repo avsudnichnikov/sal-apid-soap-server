@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions tns="http://127.0.0.1/"
+                  xmlns:s="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified">
+            <s:element name="PostPersonRequest">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="firstName" type="s:string" minOccurs="1" maxOccurs="1"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="PostPersonResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="key" type="s:string" minOccurs="1" maxOccurs="unbounded"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+        </s:schema>
+    </wsdl:types>
+    <!-- MESSAGES: defines the data being exchanged between the service and client -->
+    <wsdl:message name="PostPersonIn">
+        <wsdl:part name="parameters" element="tns:PostPersonRequest"/>
+    </wsdl:message>
+    <wsdl:message name="PostPersonOut">
+        <wsdl:part name="parameters" element="tns:PostPersonResponse"/>
+    </wsdl:message>
+    <!-- PORT TYPES: defines the complete communication operation (one way/round trip) -->
+    <wsdl:portType name="PostPersonPort">
+        <wsdl:operation name="PostPerson">
+            <wsdl:input message="tns:PostPersonIn"/>
+            <wsdl:output message="tns:PostPersonOut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <!-- BINDING: provides details on how a portType operation will actually be transmitted -->
+    <wsdl:binding name="PostPersonBinding" type="tns:PostPersonPort">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="PostPerson">
+            <soap:operation soapAction="PostPerson" style="document"/>
+            <wsdl:input> <soap:body use="literal"/> </wsdl:input>
+            <wsdl:output> <soap:body use="literal"/> </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="PostPersonBinding12" type="tns:PostPerson12Port">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="PostPerson">
+            <soap12:operation soapAction="PostPerson" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <!-- SERVICE:  -->
+    <wsdl:service name="PostPersonService">
+        <wsdl:port name="PostPersonPort" binding="tns:PostPersonBinding">
+            <soap:address location="http://localhost:8000/wsdl"/>
+        </wsdl:port>
+        <wsdl:port name="PostPerson12Port" binding="tns:PostPersonBinding12">
+            <soap12:address location="http://localhost:8000/wsdl"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

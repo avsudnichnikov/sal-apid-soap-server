@@ -16,6 +16,7 @@ function bindForm() {
         xhr.open('post', url);
         xhr.setRequestHeader('Content-Type', 'text/xml');
         xhr.send(text);
+        console.log(xhr)
         xhr.addEventListener('readystatechange', function () {
             if (this.readyState === this.DONE && this.status === 200) {
                 console.log(this.responseText);
