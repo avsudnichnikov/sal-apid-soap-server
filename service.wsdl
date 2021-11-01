@@ -45,8 +45,12 @@
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsdl:operation name="PostPerson">
             <soap:operation soapAction="PostPerson" style="document"/>
-            <wsdl:input> <soap:body use="literal"/> </wsdl:input>
-            <wsdl:output> <soap:body use="literal"/> </wsdl:output>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
         </wsdl:operation>
     </wsdl:binding>
     <wsdl:binding name="PostPersonBinding12" type="tns:PostPerson12Port">
