@@ -23,7 +23,7 @@ const postPerson = (args) =>{
 
 const service = {
     PostPersonService: {
-        PostPersonService_0: {
+        PostPersonServicePort_0: {
             PostPerson: postPerson,
         },
     }

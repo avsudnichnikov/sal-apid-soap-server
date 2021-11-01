@@ -15,14 +15,18 @@
             <form id="soapForm">
                 <div class="field">
                   <textarea class="textarea">
-<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:xmethods-delayed-quotes">
-   <soap:Header/>
-   <soap:Body>
-      <urn:postPerson soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
-      <person>
-            <firstName>Nadya</firstName>
+<soap:Envelope
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:urn="urn:xmethods-delayed-quotes">
+    <soap:Header/>
+    <soap:Body>
+        <urn:postPerson/>
+        <person>
+             <firstName>Nadya</firstName>
         </person>
-   </soap:Body>
+    </soap:Body>
 </soap:Envelope>
                   </textarea>
                 </div>

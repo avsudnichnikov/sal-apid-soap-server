@@ -41,14 +41,14 @@
         <part name="key" type="xsd:key"/>
     </message>
     <!--  server's services  -->
-    <portType name="PostPerson">
+    <portType name="PostPersonServicePort_0">
         <operation name="postPerson">
             <input message="tns:postPerson"/>
             <output message="tns:returns_key"/>
         </operation>
     </portType>
     <!--  server encoding  -->
-    <binding name="PostPersonBind" type="tns:PostPerson">
+    <binding name="PostPersonBind" type="tns:PostPersonServicePort_0">
         <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="postPerson">
             <soap:operation soapAction="urn:xmethods-delayed-quotes#postPerson"/>
@@ -70,7 +70,7 @@
     </binding>
     <!--  access to service provider  -->
     <service name="PostPersonService">
-        <port name="PostPersonService_0" binding="PostPersonBind">
+        <port name="PostPersonServicePort_0" binding="PostPersonBind">
             <soap:address location="http://127.0.0.1./wsdl"/>
         </port>
     </service>
