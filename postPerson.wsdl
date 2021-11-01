@@ -1,78 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
-             xmlns:tns="http://<%= httpHost %>/"
-             xmlns:xs="http://www.w3.org/2001/XMLSchema"
-             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
-             xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
-             name="ApidWsdl"
-             xmlns="http://schemas.xmlsoap.org/wsdl/">
+<definitions
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+        xmlns="http://schemas.xmlsoap.org/wsdl/">
     <types>
-        <xs:schema xmlns:tns="http://schemas.xmlsoap.org/wsdl/"
-                   xmlns="http://www.w3.org/2001/XMLSchema"
-                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                   elementFormDefault="qualified">
-            <complexType name="pet">
-                <sequence>
-                    <element name="type" type="string" minOccurs="1" maxOccurs="1"/>
-                </sequence>
-            </complexType>
-            <complexType name="pets">
-                <sequence>
-                    <element name="pet" type="pet" minOccurs="0" maxOccurs="unbounded"/>
-                </sequence>
-            </complexType>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
             <complexType name="person">
-                <sequence>
-                    <element name="firstName" type="string" minOccurs="1" maxOccurs="1"/>
-                    <element name="pets" type="pets" minOccurs="1" maxOccurs="1"/>
-                </sequence>
+                <element name="firstName" type="xs:string" minOccurs="1" maxOccurs="1"/>
             </complexType>
-            <element name="Request">
-                <element name="person" type="person"/>
-            </element>
-            <element name="Response">
-                <complexType>
-                    <sequence>
-                        <element name="key" type="boolean"/>
-                    </sequence>
-                </complexType>
-            </element>
-        </xs:schema>
+        </schema>
     </types>
-    <!-- Сообщения процедуры sendSms -->
     <message name="postPersonRequest">
-        <part name="Request" element="tns:Request"/>
+        <part name="person" element="xs:string"/>
     </message>
     <message name="postPersonResponse">
-        <part name="Response" element="tns:Response"/>
+        <part name="person" element="xs:string"/>
     </message>
-    <!-- Привязка процедуры к сообщениям -->
     <portType name="postPersonPortType">
         <operation name="postPerson">
-            <input message="tns:postPersonRequest"/>
-            <output message="tns:postPersonResponse"/>
+            <input message="postPersonRequest"/>
+            <output message="postPersonResponse"/>
         </operation>
     </portType>
-    <!-- Формат процедур веб-сервиса -->
-    <binding name="postPersonBinding" type="tns:postPersonPortType">
-        <soap:binding style=”rpc” transport="http://schemas.xmlsoap.org/soap/http"/>
+    <binding name="b1" type="postPersonPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="postPerson">
             <soap:operation soapAction=""/>
             <input>
-            <soap:body use="literal"/>
+                <soap:body use="literal"/>
             </input>
             <output>
                 <soap:body use="literal"/>
             </output>
         </operation>
     </binding>
-    <!-- Определение сервиса -->
-    <service name="postPerson">
-        <port name="postPersonPort" binding="tns:postPersonBinding">
-            <soap:address location="http://localhost:80/smsservice.php"/>
+    <service name="postPersonService">
+        <port name="postPersonPortType" binding="b1">
+            <soap:address location="http://localhost/wsdl"/>
         </port>
     </service>
 </definitions>

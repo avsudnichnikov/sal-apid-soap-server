@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title><%= title %></title>
-    <style media="screen">
-      body {
-        padding: 50px;
-        font: 16px Helvetica, Arial;
-      }
-    </style>
-  </head>
-  <body>
-    <h2><%= title %></h2>
-  </body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+    <title>Отправить</title>
+</head>
+<body>
+<section class="container">
+    <div class="columns">
+        <div class="column">
+            <h2>Отправить</h2>
+            <form id="soapForm">
+                <div class="field">
+                  <textarea class="textarea">
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <postPerson xmlns="http://localhost/wsdl">
+            <person>
+                <firstName>Nadya</firstName>
+            </person>
+        </postPerson>
+    </soap:Body>
+</soap:Envelope>
+                  </textarea>
+                </div>
+                <div class="field">
+                    <button class="button is-primary is-light is-fullwidth" type="submit">Отправить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<script src="static/js/sendForm.js"></script>
+</body>
 </html>
