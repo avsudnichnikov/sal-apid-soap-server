@@ -10,32 +10,22 @@
 <body>
 <section class="container">
     <div class="columns">
-        <div class="column">
+        <div class="column is-half-desktop">
             <form id="soapForm">
                 <div class="field">
-                    <textarea class="textarea">
-<soap:Envelope>
-    <soap:Header/>
-    <soap:Body>
-        <PostPersonRequest>
-            <name>
-                <firstname>Алексей</firstname>
-                <surname>Судничников</surname>
-                <patronymic>Валентинович</patronymic>
-            </name>
-            <gender>male</gender>
-            <age>32</age>
-        </PostPersonRequest>
-    </soap:Body>
-</soap:Envelope>
-                    </textarea>
+                    <div class="control">
+                        <textarea class="textarea"
+                                  placeholder="Текст запроса писать здесь. По завершении нажмите кнопку Отправить."
+                                  rows="10"></textarea>
+                    </div>
                 </div>
                 <div class="field">
-                    <button class="button is-primary is-light is-fullwidth" type="submit">Отправить</button>
+                    <button class="button is-primary is-fullwidth" type="submit">Отправить</button>
                 </div>
             </form>
-            <div id="responseField">
-            </div>
+        </div>
+        <div class="column is-half-desktop">
+            <div><code id="responseField"></code></div>
         </div>
     </div>
 </section>

@@ -12,11 +12,10 @@ function bindForm() {
         xhr.send(text);
         xhr.addEventListener('readystatechange', function () {
             if (this.readyState === this.DONE) {
-                responseField.innerHTML = '<code>'
-                    + this.responseText
-                        .replaceAll('<', '&lt;')
-                        .replaceAll('>', '><br>')
-                    +'</code>';
+                responseField.innerHTML = this.responseText
+                    .replaceAll(' <', '<')
+                    .replaceAll('<', '&lt;')
+                    .replaceAll('>', '><br>');
             }
         });
     })
