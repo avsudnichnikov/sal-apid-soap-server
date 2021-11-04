@@ -1,11 +1,25 @@
-/*jslint node: true */
-"use strict";
+const soap = require('soap');
+const url = 'http://localhost:3000/wsdl?wsdl';
 
-var soap = require('soap');
-var url = 'http://localhost/wsdl';
+// Create client
+soap.createClient(url, function (err, client) {
+    if (err){
+        throw err;
+    }
 
-soap.createClient(url,function(err, client) {
-    client.postPerson({fullName: "moscow"}, function(err, result) {
-        console.log(result);
+    const args = {
+        name: {
+            firstname: 'Bond',
+            surname: 'James',
+            patronymic: 'Azat ogli',
+        },
+        age: '32',
+        gender: 'male',
+    };
+
+    client.PostPerson(args, function (err, res) {
+        if (err)
+            throw err;
+        console.log(client.lastRequest);
     });
 });

@@ -1,18 +1,24 @@
 {
-  "name": "sal-apid-soap-server",
+  "name": "sal-apid-server",
   "version": "1.0.0",
-  "description": "tools for SAL APID",
+  "description": "tool for SAL APID",
   "author": "avsudnichnikov",
   "license": "MIT",
   "heroku-postbuild": "yarn install",
-  "dependencies": {
-    "express": "^4.17.1",
-    "path": "^0.12.7",
-    "soap": "^0.42.0",
-    "ejs": "^3.1.6"
-  },
+  "main": "server.js",
   "scripts": {
-    "start": "node app.js",
-    "serve": "nodemon app.js"
+    "start": "node server.js",
+    "serve": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/macogala/node-soap-example.git"
+  },
+  "dependencies": {
+    "easysoap": "^2.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.15.2",
+    "path": "^0.12.7",
+    "soap": "^0.39.0"
   }
 }

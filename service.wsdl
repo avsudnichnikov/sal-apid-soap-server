@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <definitions> must be the root of the WSDL document -->
+<wsdl:definitions
+        targetNamespace="http://localhost:3000/wsdl"
+        xmlns:xds="http://www.w3.org/2001/XMLSchema"
+        xmlns:xdi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:tns="http://localhost:3000/wsdl">
+  <!-- WSDL TYPES -->
+  <types>
+    <xds:schema>
+      <complexType name="name">
+        <sequence>
+          <xds:element name="firstname" type="xds:string" minOccurs="1" maxOccurs="1"/>
+          <xds:element name="surname" type="xds:string" minOccurs="1" maxOccurs="1"/>
+          <xds:element name="patronymic" type="xds:string" minOccurs="1" maxOccurs="1"/>
+        </sequence>
+      </complexType>
+      <xds:simpleType name="gender">
+        <xds:restriction base="xds:string">
+          <xds:enumeration value="male" />
+          <xds:enumeration value="female" />
+        </xds:restriction>
+      </xds:simpleType>
+    </xds:schema>
+  </types>
+  <!-- MESSAGES -->
+  <wsdl:message name="PostPersonRequest">
+    <xds:element name="name" type="tns:name" minOccurs="1" maxOccurs="1"/>
+    <xds:element name="gender" type="tns:gender" minOccurs="1" maxOccurs="1"/>
+    <xds:element name="age" type="xds:decimal" minOccurs="1" maxOccurs="1"/>
+  </wsdl:message>
+  <wsdl:message name="PostPersonResponse">
+    <xds:element name="key" type="xds:string" minOccurs="1" maxOccurs="1"/>
+  </wsdl:message>
+  <!-- PORT TYPES -->
+  <wsdl:portType name="PostPersonPort">
+    <!-- OPERATIONS -->
+    <wsdl:operation name="PostPerson">
+      <wsdl:input message="tns:PostPersonRequest"/>
+      <wsdl:output message="tns:PostPersonResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <!-- BINDING -->
+  <wsdl:binding name="PostPersonServiceSoapBinding" type="tns:PostPersonPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="PostPerson">
+      <soap:operation soapAction="PostPerson" style="document"/>
+      <wsdl:input><soap:body use="literal"/></wsdl:input>
+      <wsdl:output><soap:body use="literal"/></wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <!-- SERVICE:  -->
+  <wsdl:service name="PostPersonService">
+    <wsdl:port name="PostPersonServicePort" binding="tns:PostPersonServiceSoapBinding">
+      <soap:address location="http://localhost:3000/wsdl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
