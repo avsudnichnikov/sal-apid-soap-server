@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- <definitions> must be the root of the WSDL document -->
 <wsdl:definitions
-        targetNamespace="http://localhost:3000/wsdl"
+        targetNamespace="http://sal-apid.herokuapp.com:3000/wsdl"
         xmlns:xds="http://www.w3.org/2001/XMLSchema"
         xmlns:xdi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
         xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
         xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-        xmlns:tns="http://localhost:3000/wsdl">
+        xmlns:tns="http://sal-apid.herokuapp.com/wsdl">
   <!-- WSDL TYPES -->
   <types>
     <xds:schema>
@@ -55,7 +55,7 @@
   <!-- SERVICE:  -->
   <wsdl:service name="PostPersonService">
     <wsdl:port name="PostPersonServicePort" binding="tns:PostPersonServiceSoapBinding">
-      <soap:address location="http://localhost:3000/wsdl"/>
+      <soap:address location="http://sal-apid.herokuapp.com/wsdl"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
