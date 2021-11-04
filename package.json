@@ -4,7 +4,7 @@
   "description": "tool for SAL APID",
   "author": "avsudnichnikov",
   "license": "MIT",
-  "heroku-postbuild": "yarn install",
+  "heroku-postbuild": "yarn",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -15,7 +15,6 @@
     "url": "git+https://github.com/macogala/node-soap-example.git"
   },
   "dependencies": {
-    "bulma": "^0.9.3",
     "ejs": "^3.1.6",
     "express": "^4.15.2",
     "path": "^0.12.7",
