@@ -13,9 +13,8 @@ function bindForm() {
         xhr.addEventListener('readystatechange', function () {
             if (this.readyState === this.DONE) {
                 responseField.innerHTML = this.responseText
-                    .replaceAll(' <', '<')
-                    .replaceAll('<', '&lt;')
-                    .replaceAll('>', '><br>');
+                    .replace(/ ?</g, '&lt;')
+                    .replace(/>&lt;/g, '><br>&lt;');
             }
         });
     })
