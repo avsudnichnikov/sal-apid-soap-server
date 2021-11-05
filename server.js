@@ -55,6 +55,7 @@ function postPerson(person) {
     recursiveTypeCheck(template, person);
     return {
         key: 'You are awesome!',
+        result: 'The data is valid',
     }
 }
 
