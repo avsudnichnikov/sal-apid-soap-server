@@ -8,7 +8,7 @@
         xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
         xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
         xmlns:tns="http://sal-apid.herokuapp.com/wsdl">
-  <!-- WSDL TYPES -->
+  <!-- TYPES -->
   <types>
     <xds:schema>
       <complexType name="name">
@@ -24,16 +24,37 @@
           <xds:enumeration value="female" />
         </xds:restriction>
       </xds:simpleType>
+      <xds:simpleType name="color">
+        <xds:restriction base="xds:string">
+          <xds:enumeration value="red" />
+          <xds:enumeration value="orange" />
+          <xds:enumeration value="yellow" />
+          <xds:enumeration value="green" />
+          <xds:enumeration value="sky" />
+          <xds:enumeration value="blue" />
+          <xds:enumeration value="violet" />
+          <xds:enumeration value="purple" />
+          <xds:enumeration value="black" />
+          <xds:enumeration value="white" />
+          <xds:enumeration value="grey" />
+          <xds:enumeration value="silver" />
+          <xds:enumeration value="brown" />
+          <xds:enumeration value="gold" />
+          <xds:enumeration value="pink" />
+        </xds:restriction>
+      </xds:simpleType>
     </xds:schema>
   </types>
   <!-- MESSAGES -->
   <wsdl:message name="PostPersonRequest">
     <xds:element name="name" type="tns:name" minOccurs="1" maxOccurs="1"/>
     <xds:element name="gender" type="tns:gender" minOccurs="1" maxOccurs="1"/>
+    <xds:element name="hobby" type="xds:string" minOccurs="1" maxOccurs="1"/>
+    <xds:element name="city" type="xds:string" minOccurs="1" maxOccurs="1"/>
     <xds:element name="age" type="xds:decimal" minOccurs="1" maxOccurs="1"/>
+    <xds:element name="favoriteColor" type="tns:color" minOccurs="1" maxOccurs="1"/>
   </wsdl:message>
   <wsdl:message name="PostPersonResponse">
-    <xds:element name="key" type="xds:string" minOccurs="1" maxOccurs="1"/>
     <xds:element name="result" type="xds:string" minOccurs="1" maxOccurs="1"/>
   </wsdl:message>
   <!-- PORT TYPES -->

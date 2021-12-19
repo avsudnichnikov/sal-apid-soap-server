@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="static/css/bulma.css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+    <title>Отправить</title>
+</head>
+<body>
+<section class="container">
+    <div class="columns mt-3">
+        <div class="column is-half-desktop">
+            <form id="soapForm">
+                <div class="field">
+                    <div class="control">
+                        <textarea
+                            class="textarea"
+                            placeholder="Текст запроса писать здесь. По завершении нажмите кнопку Отправить."
+                            rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <button class="button is-primary is-fullwidth" type="submit">Отправить</button>
+                </div>
+            </form>
+        </div>
+        <div class="column is-half-desktop">
+            <div><code id="responseField"></code></div>
+        </div>
+    </div>
+</section>
+<script src="static/js/sendForm.js"></script>
+</body>
+</html>
