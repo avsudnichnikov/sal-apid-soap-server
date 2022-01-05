@@ -42,7 +42,7 @@ const values = {
   ],
 }
 
-const isAvailableValue = (type, val) => {
+const isAvailableValue = (type, val = '') => {
   return values[type].includes(val.toLowerCase());
 }
 
