@@ -42,8 +42,8 @@ const values = {
   ],
 }
 
-const isAvailableValue = (type, val = '') => {
-  return values[type].includes(val.toLowerCase());
+const isAvailableValue = (type, val) => {
+  return values[type].includes((val || '').toLowerCase());
 }
 
 const checkSimpleType = (type, val) => {
